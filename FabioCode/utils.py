@@ -91,9 +91,15 @@ class Model(nn.Module):
         self.LAYER_RoBERTa = RobertaModel.from_pretrained(RobertaType)
 
         # teste per la classificazione e regressione
-        self.LAYER_headValence = nn.Linear(self.LAYER_RoBERTa.config.hidden_size, outputsClass)
         self.LAYER_headValcenceSoftmax = nn.Softmax(outputsClass)
-        self.LAYER_headArousal = nn.Linear(self.LAYER_RoBERTa.config.hidden_size, 1)
+        self.LAYER_headValence = nn.Sequential(
+            # Aggiungere qui nuovi layer per ottenere maggiore capacita espressiva
+            nn.Linear(self.LAYER_RoBERTa.config.hidden_size, outputsClass)
+            )
+        self.LAYER_headArousal = nn.Sequential(
+            # Aggiungere qui nuovi layer per ottenere maggiore capacita espressiva
+            nn.Linear(self.LAYER_RoBERTa.config.hidden_size, 1)
+            )
 
 
     def forward(self, phrases, device):
