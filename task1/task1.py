@@ -3,28 +3,57 @@ import numpy as np
 import torch
 import torch.nn as nn
 from torch.utils.data import Dataset, DataLoader
-from transformers import AutoTokenizer, AutoModel
+from transformers import AutoTokenizer, AutoModel, RobertaConfig, RobertaModel
 from torch.optim import AdamW
 from sklearn.model_selection import train_test_split
 from scipy.stats import pearsonr
+import argparse
+
+# ------------------------
+# ARGPARSE SETUP
+# ------------------------
+parser = argparse.ArgumentParser(description="Affect Model Training Configuration")
+
+parser.add_argument("--model_name", type=str, default="roberta-base", help="HuggingFace model name")
+parser.add_argument("--max_len", type=int, default=128, help="Max sequence length")
+parser.add_argument("--batch_size", type=int, default=16, help="Batch size")
+parser.add_argument("--lr", type=float, default=2e-5, help="Learning rate")
+parser.add_argument("--epochs", type=int, default=10, help="Number of epochs")
+parser.add_argument("--user_emb_dim", type=int, default=32, help="User embedding dimension")
+parser.add_argument("--hidden_dim", type=int, default=128, help="Hidden layer dimension")
+parser.add_argument("--dropout", type=float, default=0.2, help="Dropout rate")
+parser.add_argument("--save_path", type=str, default="best_model_task1_user_emb.pth", help="Model save path")
+parser.add_argument("--train_path", type=str, default="data/train_subtask1.csv", help="Train data path")
+parser.add_argument("--test_path", type=str, default="data/test_subtask1.csv", help="Test data path")
+parser.add_argument("--random_state", type=int, default=0, help="Random seed")
+
+# "roberta-base", "cardiffnlp/twitter-roberta-base-emotion, SamLowe/roberta-base-go_emotions
+
+args = parser.parse_args()
 
 # ------------------------
 # CONFIG
 # ------------------------
 DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-MODEL_NAME = "roberta-base"
-MAX_LEN = 128
-BATCH_SIZE = 16
-LR = 2e-5
-EPOCHS = 10
 
-USER_EMB_DIM = 32
-HIDDEN_DIM = 128
-DROPOUT = 0.2
+MODEL_NAME = args.model_name
+MAX_LEN = args.max_len
+BATCH_SIZE = args.batch_size
+LR = args.lr
+EPOCHS = args.epochs
 
-SAVE_PATH = "best_model_task1_user_emb.pth"
-TRAIN_PATH = "data/train_subtask1.csv"
-TEST_PATH = "data/test_subtask1.csv"
+USER_EMB_DIM = args.user_emb_dim
+HIDDEN_DIM = args.hidden_dim
+DROPOUT = args.dropout
+
+SAVE_PATH = args.save_path
+TRAIN_PATH = args.train_path
+TEST_PATH = args.test_path
+
+RANDOM_STATE = args.random_state
+
+# Importante per la riproducibilità
+torch.manual_seed(RANDOM_STATE)
 
 # ------------------------
 # LOAD DATA
@@ -42,7 +71,7 @@ num_users = len(user_to_idx)
 train_df, val_df = train_test_split(
     df,
     test_size=0.1,
-    random_state=66,
+    random_state=RANDOM_STATE,
     stratify=df["user_id"].astype(str)
 )
 
@@ -59,7 +88,10 @@ val_df[["valence", "arousal"]] = (val_df[["valence", "arousal"]].values - mu) / 
 # ------------------------
 # TOKENIZER
 # ------------------------
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
+if MODEL_NAME == "":
+    tokenizer = AutoTokenizer.from_pretrained("roberta-base")
+else:
+    tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 
 # ------------------------
 # DATASET
@@ -120,10 +152,17 @@ class AffectTestDataset(Dataset):
 class AffectModelWithUserEmb(nn.Module):
     def __init__(self):
         super().__init__()
+        
+        if MODEL_NAME == "":
+            config = RobertaConfig.from_pretrained("roberta-base")
+            model = RobertaModel(config)
+            self.roberta = model
+        else:
+            self.roberta = AutoModel.from_pretrained(MODEL_NAME)
 
-        self.roberta = AutoModel.from_pretrained(MODEL_NAME)
-
-        self.user_emb = nn.Embedding(num_users + 1, USER_EMB_DIM)
+        if USER_EMB_DIM >0:
+            self.user_emb = nn.Embedding(num_users + 1, USER_EMB_DIM, padding_idx=0)
+            nn.init.normal_(self.user_emb.weight, mean=0, std=1)
 
         self.regressor = nn.Sequential(
             nn.Linear(self.roberta.config.hidden_size + USER_EMB_DIM, HIDDEN_DIM),
@@ -138,8 +177,12 @@ class AffectModelWithUserEmb(nn.Module):
             attention_mask=attention_mask
         ).last_hidden_state[:, 0, :]  # CLS
 
-        user_emb = self.user_emb(user_idx)
-        x = torch.cat([text_emb, user_emb], dim=1)
+        if USER_EMB_DIM > 0:
+            user_emb = self.user_emb(user_idx)
+            x = torch.cat([text_emb, user_emb], dim=1)
+        else:
+            x = text_emb
+
         return self.regressor(x)
 
 # ------------------------
@@ -172,11 +215,11 @@ def composite_r(rw, rb):
 # ------------------------
 model = AffectModelWithUserEmb().to(DEVICE)
 
-optimizer = AdamW(model.parameters(), lr=LR)
-criterion = nn.SmoothL1Loss(beta=0.5)  # HUBER
-
 train_loader = DataLoader(AffectDataset(train_df), batch_size=BATCH_SIZE, shuffle=True)
 val_loader = DataLoader(AffectDataset(val_df), batch_size=BATCH_SIZE)
+
+optimizer = AdamW(model.parameters(), lr=LR)
+criterion = nn.SmoothL1Loss(beta=0.5)  # HUBER
 
 best_score = -1
 

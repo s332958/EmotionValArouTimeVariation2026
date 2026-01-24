@@ -1,0 +1,1039 @@
+============================================================
+                REPORT DETTAGLIATO DATASET
+============================================================
+
+[1] STATISTICHE GENERALI:
+- Numero di utenti unici: 137
+  > Utenti con meno di 10 frasi: 49
+  > Utenti con 10 o più frasi: 88
+- Numero totale di righe (frasi + liste): 2764
+- Media righe per utente: 20.18
+
+[2] DETTAGLIO RIGHE PER UTENTE:
+ user_id  num_frasi
+      40        206
+       2        177
+      33        108
+      17        105
+      38         97
+      27         88
+      16         76
+      11         63
+      45         47
+     124         40
+     169         39
+      26         39
+      57         37
+      58         37
+      62         36
+     172         36
+     158         35
+      83         34
+      63         32
+      91         31
+     103         31
+     174         31
+      85         29
+     108         28
+     125         24
+      79         23
+     171         21
+      90         21
+     147         21
+       6         21
+      60         21
+      81         20
+      77         20
+     150         20
+     131         20
+     144         20
+     139         20
+     116         19
+     161         19
+      64         19
+      76         19
+     179         19
+     121         19
+     138         19
+     126         18
+      50         18
+      93         18
+     162         18
+     170         17
+     168         17
+      95         17
+     107         17
+     140         17
+     180         17
+      75         16
+      98         16
+     128         16
+      88         16
+      94         15
+     153         15
+     163         15
+      96         14
+     137         14
+      99         14
+     134         14
+     105         14
+      89         14
+     114         14
+      80         14
+      71         13
+     127         13
+     120         13
+     146         12
+     141         12
+     167         12
+     155         12
+     122         12
+      36         11
+     113         11
+     133         11
+      18         10
+      56         10
+      54         10
+      66         10
+     142         10
+     148         10
+      61         10
+      15         10
+     164          9
+      67          9
+      59          9
+      52          9
+      39          9
+      73          9
+      86          9
+     106          9
+       4          8
+      28          8
+      68          8
+     178          8
+     152          7
+      78          7
+     109          7
+     145          7
+      87          7
+      23          7
+      46          7
+     182          6
+     119          6
+      47          6
+     173          6
+      29          6
+       1          5
+      74          5
+      32          5
+      72          5
+       3          5
+      24          5
+      19          5
+      10          4
+      44          4
+      42          4
+      43          4
+      31          4
+      51          3
+     166          3
+      14          3
+      21          3
+      25          3
+     176          3
+       8          2
+       7          2
+      30          2
+      41          2
+      34          2
+      35          2
+      20          2
+
+[3] ANALISI FREQUENZA PAROLE TARGET:
+- Numero totale di parole target uniche identificate: 861
+- Parole con >= 30 occorrenze nelle frasi comuni: 69
+- Parole con < 30 occorrenze nelle frasi comuni: 792
+
+--- DETTAGLIO PAROLE (Ordinate per totale occorrenze) ---
+                                                          parola valence arousal  count_frasi (False)  count_liste (True)  totale_occorrenze
+                                                           tired   -0.31    0.50                  322                 540                862
+                                                         feeling    2.00    1.00                  772                   1                773
+                                                           happy    1.01    0.88                  336                 429                765
+                                                            calm    0.93    0.45                  147                 418                565
+                                                            work   -1.00    0.75                  550                   4                554
+                                                         content    0.96    0.47                  129                 379                508
+                                                            good    1.06    0.88                  399                  66                465
+                                                         relaxed    1.12    0.39                   89                 295                384
+                                                         excited    1.04    1.09                  116                 167                283
+                                                         anxious   -0.34    1.05                   83                 128                211
+                                                          sleepy   -0.28    0.30                   25                 169                194
+                                                             sad   -0.90    0.84                   78                 107                185
+                                                        stressed   -0.64    0.69                  102                  70                172
+                                                       exhausted   -1.20    0.34                   62                 106                168
+                                                            busy    0.50    1.02                  114                  48                162
+                                                         neutral    0.08    0.87                   51                 106                157
+                                                          pretty    0.00    1.00                  152                   1                153
+                                                           still    0.33    0.33                  148                   3                151
+                                                          person    1.00    1.60                  146                   5                151
+                                                              an    1.00    1.00                  142                   1                143
+                                                        sluggish   -1.00    0.24                   51                  91                142
+                                                          hungry    0.29    0.68                   34                 108                142
+                                                            well    1.33    0.67                  138                   3                141
+                                                            done   -1.00    0.00                  134                   2                136
+                                                          better    1.00    2.00                  134                   1                135
+                                                           sleep   -1.00    0.00                  134                   1                135
+                                                         nervous   -0.46    1.07                   67                  67                134
+                                                           ready    0.50    1.35                  106                  20                126
+                                                          active    0.55    1.40                   37                  88                125
+                                                            nice    1.57    1.00                  103                   7                110
+                                                            life   -2.00    0.00                  106                   1                107
+                                                            fine    0.52    0.81                   58                  48                106
+                                                           comfy    1.14    0.06                    0                 101                101
+                                                            okay    0.19    0.90                   79                  21                100
+                                                         weekend    0.00    1.00                   96                   1                 97
+                                                           great    1.00    0.83                   89                   6                 95
+                                                             org   -0.33    1.00                   92                   3                 95
+                                                            down   -1.20    0.67                   78                  15                 93
+                                                         drained   -1.29    0.34                   53                  38                 91
+                                                          energy    0.14    1.86                   83                   7                 90
+                                                         worried   -0.73    0.67                   37                  52                 89
+                                                        grateful    1.14    0.73                   49                  37                 86
+                                                             bad   -2.00    1.00                   83                   1                 84
+                                                         annoyed   -0.81    0.81                   20                  62                 82
+                                                         focused    0.57    0.90                   22                  58                 80
+                                                           quiet    0.15    0.28                   40                  39                 79
+                                                           relax    0.59    0.47                   61                  17                 78
+                                                      productive    0.69    0.88                   33                  42                 75
+                                                          stress   -0.90    0.40                   65                  10                 75
+                                                     overwhelmed   -0.97    0.79                   35                  38                 73
+                                                         working    0.00    1.00                   65                   5                 70
+                                                            full    0.53    0.56                   38                  32                 70
+                                                        positive    0.79    0.57                   55                  14                 69
+                                                            sore   -0.23    0.29                   13                  56                 69
+                                                            even    0.00    1.00                   66                   1                 67
+                                                       motivated    0.83    1.08                   29                  36                 65
+                                                           bored   -0.37    0.70                   18                  46                 64
+                                                           money   -2.00    1.00                   63                   1                 64
+                                                            lazy   -0.04    0.40                   15                  48                 63
+                                                            hope    2.00    2.00                   61                   1                 62
+                                                         hopeful    0.80    1.02                   17                  45                 62
+                                                        relaxing    0.75    0.75                   58                   4                 62
+                                                         anxiety   -0.81    0.75                   46                  16                 62
+                                                       hopefully    0.00    2.00                   59                   1                 60
+                                                      frustrated   -1.05    0.90                   18                  42                 60
+                                                            sick   -0.95    0.38                   38                  21                 59
+                                                           chill    1.11    0.59                   11                  44                 55
+                                                       satisfied    1.38    0.46                   18                  37                 55
+                                                            cool    1.09    0.89                   11                  44                 55
+                                                      optimistic    0.34    0.98                   13                  41                 54
+                                                             fun    1.09    0.91                   42                  11                 53
+                                                        peaceful    1.60    0.13                   22                  30                 52
+                                                            made   -1.00    2.00                   51                   1                 52
+                                                            late    0.00    2.00                   51                   1                 52
+                                                       energetic    0.89    1.20                   15                  35                 50
+                                                            cold   -0.11    0.89                   41                   9                 50
+                                                              ok    0.00    1.00                   34                  15                 49
+                                                    accomplished    0.73    0.86                   26                  22                 48
+                                                           focus   -0.25    0.75                   44                   4                 48
+                                                            blah    0.00    0.67                   40                   6                 46
+                                                            love    1.33    1.33                   38                   6                 44
+                                                       feel good    2.00    1.00                   42                   2                 44
+                                                          rested    1.44    0.44                   10                  32                 42
+                                                           quite    0.33    0.42                   27                  12                 39
+                                                          lively    1.18    1.39                   11                  28                 39
+                                                           awake    0.66    0.44                    7                  32                 39
+                                                           loved    1.00    1.08                   12                  26                 38
+                                                      motivation    0.00    1.69                   25                  13                 38
+                                                       depressed   -1.35    1.00                   17                  20                 37
+                                                        emotions    0.00    1.00                   36                   1                 37
+                                                       lethargic   -0.59    0.55                   15                  22                 37
+                                                       energized    0.75    1.55                   17                  20                 37
+                                                          normal    0.21    0.71                   22                  14                 36
+                                                           maybe    0.00    1.00                   34                   1                 35
+                                                            slow   -0.33    0.73                   20                  15                 35
+                                                          joyful    1.41    0.93                    6                  29                 35
+                                                            left   -1.00    1.00                   33                   1                 34
+                                                       refreshed    1.73    0.41                   12                  22                 34
+                                                        relieved    0.62    1.10                   13                  21                 34
+                                                           angry   -0.92    1.04                   10                  24                 34
+                                                         jittery   -0.87    1.43                   11                  23                 34
+                                                              na    0.83    0.66                    4                  29                 33
+                                                      very tired    0.00    1.00                   32                   1                 33
+                                                      determined    0.21    0.83                    4                  29                 33
+                                                       emotional   -0.42    1.17                   19                  12                 31
+                                                          lonely   -0.96    0.65                    8                  23                 31
+                                                        thinking    0.67    1.00                   27                   3                 30
+                                                          future   -1.33    0.67                   27                   3                 30
+                                                             gym    0.00    2.00                   26                   3                 29
+                                                         at home    2.00    1.00                   27                   1                 28
+                                                           clean    1.33    0.50                   15                  12                 27
+                                                           peace    1.67    0.67                   24                   3                 27
+                                                    enthusiastic    1.06    1.06                    9                  18                 27
+                                                       irritated   -0.80    1.00                    6                  20                 26
+                                                        reserved    1.05    0.91                    3                  22                 25
+                                                          strong    1.60    1.20                   20                   5                 25
+                                                       beautiful    1.00    1.00                   23                   2                 25
+                                                        headache   -1.00    0.00                   21                   4                 25
+                                                          moving    0.00    2.00                   23                   1                 24
+                                                         waiting    0.40    1.00                   19                   5                 24
+                                                            cozy    0.35    0.10                    4                  20                 24
+                                                          mellow    0.79    0.47                    5                  19                 24
+                                                            warm    0.73    0.36                   13                  11                 24
+                                                            glad    0.86    1.43                   16                   7                 23
+                                                             mad   -0.44    0.89                    5                  18                 23
+                                                      thoughtful    0.43    0.71                    2                  21                 23
+                                                           eager    0.67    1.00                    8                  15                 23
+                                                           clear    0.00    1.00                   21                   1                 22
+                                                     unmotivated   -0.95    0.37                    3                  19                 22
+                                                    overwhelming    0.00    1.00                   21                   1                 22
+                                                           proud    0.76    0.76                    5                  17                 22
+                                                          worked   -0.50    1.00                   14                   8                 22
+                                                       wonderful    2.00    1.00                   20                   1                 21
+                                                          scared   -0.55    0.55                   10                  11                 21
+                                                         smiling    1.39    1.39                    3                  18                 21
+                                                             hot    0.65    0.94                    4                  17                 21
+                                                     school work    0.00    1.00                   19                   2                 21
+                                                         present    0.00    1.00                   18                   2                 20
+                                                            easy    0.00    1.00                   19                   1                 20
+                                                           extra    0.00    0.00                   19                   1                 20
+                                                          gentle    1.50    0.00                   16                   4                 20
+                                                            numb   -1.00    0.56                   11                   9                 20
+                                                  a little tired    0.00    0.00                   19                   1                 20
+                                                        together    1.00    1.00                   19                   1                 20
+                                                         chilled    0.90    0.60                    0                  20                 20
+                                                    little tired    2.00    0.00                   19                   1                 20
+                                                         fatigue   -0.50    0.25                   15                   4                 19
+                                                    disappointed   -0.80    0.80                    9                  10                 19
+                                                           alive    0.83    1.25                    7                  12                 19
+                                                       very busy    0.00    1.00                   17                   1                 18
+                                                             n/a   -0.06    0.56                    0                  18                 18
+                                                          serene    1.60    0.60                    8                  10                 18
+                                                         healthy    1.14    1.00                   11                   7                 18
+                                                       confident    0.56    0.67                    9                   9                 18
+                                                     comfortable    0.92    0.46                    5                  13                 18
+                                                            free    0.50    0.50                   16                   2                 18
+                                                        confused   -1.08    0.92                    4                  13                 17
+                                                         hurting   -0.67    0.00                   14                   3                 17
+                                                           spent   -1.40    0.40                   12                   5                 17
+                                                         engaged    1.60    0.80                   12                   5                 17
+                                                        restless   -0.64    1.07                    3                  14                 17
+                                                         worries   -2.00    1.00                   16                   1                 17
+                                                       good mood    2.00    1.50                   15                   2                 17
+                                                        thankful    0.62    1.00                    8                   8                 16
+                                                       concerned   -0.83    0.67                   10                   6                 16
+                                                           small   -2.00    0.00                   15                   1                 16
+                                                            pain   -0.60    0.40                   11                   5                 16
+                                                            lost   -2.00    1.00                   13                   3                 16
+                                                             low   -2.00    1.00                   15                   1                 16
+                                                         workout    0.00    2.00                   15                   1                 16
+                                                    anticipating   -0.60    0.60                   11                   5                 16
+                                                         pleased    1.11    0.78                    7                   9                 16
+                                                       irritable   -1.57    1.14                    9                   7                 16
+                                                        studying    2.00    0.00                   14                   1                 15
+                                                         amazing    0.00    2.00                   14                   1                 15
+                                                       fulfilled    1.90    0.50                    5                  10                 15
+                                                        planning    0.00    2.00                   14                   1                 15
+                                                     contentment    0.00    2.00                   14                   1                 15
+                                                    with friends    2.00    0.00                   14                   1                 15
+                                                           alert    0.86    0.57                    7                   7                 14
+                                                           alone   -1.33    0.83                    8                   6                 14
+                                                   uncomfortable   -1.12    0.38                    6                   8                 14
+                                                          wanted    0.75    1.25                   10                   4                 14
+                                                        prepared    0.50    1.00                   10                   4                 14
+                                                          waking    0.00    0.00                   13                   1                 14
+                                                        complete    1.33    0.33                   11                   3                 14
+                                                           upset   -0.83    0.67                    8                   6                 14
+                                                       attentive    0.85    0.62                    1                  13                 14
+                                                          stable    0.25    0.62                    5                   8                 13
+                                                        exciting    2.00    0.50                   11                   2                 13
+                                                           level    1.00    0.00                   12                   1                 13
+                                                        at peace    1.25    0.50                    9                   4                 13
+                                                       making it    0.00    1.00                   12                   1                 13
+                                                         alright    1.00    0.67                   10                   3                 13
+                                                         balance    0.00    1.00                   11                   2                 13
+                                                        balanced    0.67    0.83                    7                   6                 13
+                                                         unhappy   -0.50    1.00                    5                   8                 13
+                                                        cheerful    1.50    1.00                    3                  10                 13
+                                                          warmth    0.00    1.00                   12                   1                 13
+                                                           worry    2.00    0.00                   12                   1                 13
+                                                           weird   -1.33    0.33                   10                   3                 13
+                                                           foggy   -1.40    0.20                    8                   5                 13
+                                                         curious    0.27    0.73                    2                  11                 13
+                                                           crazy   -2.00    1.00                   12                   1                 13
+                                                        pleasant    0.33    0.83                    7                   6                 13
+                                                           stuck   -1.33    1.00                   10                   3                 13
+                                                           heavy   -0.33    0.33                    9                   3                 12
+                                                            open   -1.00    1.00                   11                   1                 12
+                                                          behind   -1.00    0.00                   11                   1                 12
+                                                           bills   -2.00    0.00                   11                   1                 12
+                                                         helpful    0.00    0.00                   10                   2                 12
+                                                            high    0.33    0.67                    9                   3                 12
+                                                         talking    2.00    1.00                   11                   1                 12
+                                                          relief   -0.50    0.50                   10                   2                 12
+                                                            weak   -1.43    0.43                    4                   7                 11
+                                                            ease    1.00    0.00                   10                   1                 11
+                                                           drunk   -0.50    1.00                    7                   4                 11
+                                                        fatigued   -1.56    0.44                    2                   9                 11
+                                                          unsure   -0.20    1.00                    6                   5                 11
+                                                          joyous    1.33    0.83                    5                   6                 11
+                                                         blessed    2.00    0.67                    8                   3                 11
+                                                     indifferent    0.12    0.62                    3                   8                 11
+                                                           empty   -1.00    1.00                    8                   2                 10
+                                                         restful    2.00    0.00                    9                   1                 10
+                                                  slightly tired    1.25    0.25                    6                   4                 10
+                                                     watching tv    0.00    1.00                    8                   2                 10
+                                                           tense   -1.67    1.33                    7                   3                 10
+                                                            hurt   -2.00    0.60                    5                   5                 10
+                                                         dancing    2.00    1.33                    1                   9                 10
+                                                       impatient   -0.75    0.88                    2                   8                 10
+                                                    appreciative    1.60    0.00                    5                   5                 10
+                                                           broke   -0.67    1.00                    7                   3                 10
+                                                 don’t feel good    2.00    0.00                    8                   1                  9
+                                                         special    1.33    1.33                    6                   3                  9
+                                                        dragging   -1.00    1.00                    8                   1                  9
+                                                ready to go home   -1.50    0.00                    7                   2                  9
+                                                   ready for bed   -1.00    0.67                    6                   3                  9
+                                                  ready for work    0.50    1.00                    7                   2                  9
+                                                 little stressed    2.00    0.00                    8                   1                  9
+                                                           light    1.00    2.00                    7                   2                  9
+                                                    anticipatory    0.38    1.25                    1                   8                  9
+                                                         intense    2.00    2.00                    8                   1                  9
+                                                       not happy   -2.00    0.50                    7                   2                  9
+                                                       tiredness    1.00    2.00                    8                   1                  9
+                                                        chilling    1.50    0.50                    5                   4                  9
+                                                        calmness    0.00    1.00                    8                   1                  9
+                                                             meh   -0.38    0.62                    1                   8                  9
+                                                         at ease    2.00    1.00                    8                   1                  9
+                                                        defeated   -1.00    0.80                    4                   5                  9
+                                                    satisfaction    0.00    0.67                    6                   3                  9
+                                                     well rested    1.75    0.25                    5                   4                  9
+                                                         settled    0.67    1.00                    6                   3                  9
+                                                     a lot to do    0.00    1.00                    8                   1                  9
+                                                          social    0.00    1.00                    6                   2                  8
+                                                           dizzy   -1.00    0.00                    7                   1                  8
+                                                        feel bad   -1.00    0.00                    7                   1                  8
+                                                       surprised    1.25    1.75                    4                   4                  8
+                                                            dull   -0.71    0.29                    1                   7                  8
+                                                           anger   -0.50    0.50                    4                   4                  8
+                                                        studious    1.62    0.25                    0                   8                  8
+                                                         thirsty   -0.50    0.62                    0                   8                  8
+                                                       connected    1.33    0.67                    5                   3                  8
+                                                        grounded    1.00    0.00                    7                   1                  8
+                                                   contemplative    1.67    0.33                    5                   3                  8
+                                                        hungover   -1.25    0.25                    4                   4                  8
+                                                    busy at work    0.50    1.50                    6                   2                  8
+                                                       unfocused   -1.00    1.00                    0                   8                  8
+                                                          upbeat    1.00    1.50                    6                   2                  8
+                                                           moody   -0.50    0.38                    0                   8                  8
+                                                   very sluggish   -2.00    0.00                    7                   1                  8
+                                                   a lot of work    0.00    1.00                    7                   1                  8
+                                                      reflective   -0.67    0.00                    4                   3                  7
+                                                        dreading    0.00    1.00                    6                   1                  7
+                                                           goals    0.00    2.00                    6                   1                  7
+                                                          drowsy    0.33    0.83                    1                   6                  7
+                                                       gratitude    0.00    2.00                    6                   1                  7
+                                                            edge    0.00    1.00                    6                   1                  7
+                                                     i feel calm    1.00    1.00                    6                   1                  7
+                                                      unbothered   -0.29    1.14                    0                   7                  7
+                                                           aware   -0.33    1.67                    4                   3                  7
+                                                            achy   -0.67    0.67                    1                   6                  7
+                                                        nauseous   -1.00    1.00                    4                   3                  7
+                                                       collected    2.00    0.00                    2                   5                  7
+                                                   introspective    0.25    0.75                    3                   4                  7
+                                                      interested    0.75    0.00                    3                   4                  7
+                                                   in the middle    0.00    1.00                    6                   1                  7
+                                                          grumpy   -0.71    0.57                    0                   7                  7
+                                                         on edge   -1.00    2.00                    6                   1                  7
+                                                           antsy   -0.83    2.00                    0                   6                  6
+                                                         awesome    1.67    1.00                    3                   3                  6
+                                                        worn out   -2.00    0.00                    3                   3                  6
+                                                          unwell   -1.00    0.25                    2                   4                  6
+                                                         vibrant    1.00    1.67                    3                   3                  6
+                                                      wellrested    0.17    0.83                    0                   6                  6
+                                                     frustration    2.00    0.00                    5                   1                  6
+                                                       delighted    1.67    0.67                    0                   6                  6
+                                                        detached    0.00    1.00                    5                   1                  6
+                                                        creative    1.67    1.00                    0                   6                  6
+                                                           hyper    0.50    1.00                    4                   2                  6
+                                                        on track    1.00    0.00                    5                   1                  6
+                                                     celebrating   -0.50    1.00                    4                   2                  6
+                                                    making money    1.17    1.00                    0                   6                  6
+                                                      melancholy   -0.40    1.00                    1                   5                  6
+                                                         patient    1.00    0.50                    4                   2                  6
+                                                          groggy   -1.40    0.20                    1                   5                  6
+                                                        terrible   -1.00    0.00                    5                   1                  6
+                                                      successful    0.00    2.00                    5                   1                  6
+                                                           smile    1.00    1.00                    5                   1                  6
+                                                  somewhat happy    0.50    1.25                    2                   4                  6
+                                                        friendly    0.60    0.60                    1                   5                  6
+                                                      distracted   -1.00    0.33                    3                   3                  6
+                                                           fuzzy    0.00    1.00                    3                   2                  5
+                                                    feeling down   -2.00    1.00                    4                   1                  5
+                                                          somber   -1.00    1.00                    4                   1                  5
+                                                   going to work   -1.00    0.00                    4                   1                  5
+                                                            soft    0.00    1.00                    4                   1                  5
+                                                somewhat content    1.00    0.00                    4                   1                  5
+                                                           funny    1.00    2.00                    3                   2                  5
+                                                           aches   -1.00    0.00                    4                   1                  5
+                                                          rushed    0.50    0.00                    3                   2                  5
+                                                       scattered    0.00    1.33                    2                   3                  5
+                                                      refreshing    0.00    2.00                    4                   1                  5
+                                                    apprehensive   -0.50    1.00                    1                   4                  5
+                                                    long weekend   -1.00    0.00                    4                   1                  5
+                                                          afraid   -1.50    1.00                    3                   2                  5
+                                                          lovely    2.00    1.00                    1                   4                  5
+                                                           lucky    1.00    1.50                    3                   2                  5
+                                                            beat   -2.00    0.00                    3                   2                  5
+                                                            mild   -1.00    0.50                    3                   2                  5
+                                                           tried   -1.00    0.00                    4                   1                  5
+                                                        insecure   -1.00    0.00                    3                   2                  5
+                                                  just waking up    0.50    1.00                    3                   2                  5
+                                                        bothered    0.00    1.50                    3                   2                  5
+                                                        hopefull    0.20    0.80                    0                   5                  5
+                                                  overstimulated   -1.00    1.00                    2                   3                  5
+                                                      confidence    2.00    1.00                    4                   1                  5
+                                                       contented    1.50    0.00                    3                   2                  5
+                                                        hopeless   -2.00    0.00                    4                   1                  5
+                                                          smooth    0.33    0.67                    2                   3                  5
+                                                         in pain    0.00    0.50                    1                   4                  5
+                                                        unbiased    0.00    1.00                    2                   3                  5
+                                                       nostalgic   -0.33    1.00                    2                   3                  5
+                                                      recovering    0.00    2.00                    4                   1                  5
+                                                            wise    2.00    1.00                    4                   1                  5
+                                                          cranky   -2.00    0.60                    0                   5                  5
+                                                         fearful   -1.25    0.75                    1                   4                  5
+                                                      overworked    0.00    0.00                    2                   2                  4
+                                                     uncertainty   -2.00    2.00                    3                   1                  4
+                                                        off work    1.00    1.00                    3                   1                  4
+                                                       congested    0.67    0.33                    1                   3                  4
+                                                     unsupported   -2.00    1.00                    2                   2                  4
+                                                         unheard   -1.00    0.75                    0                   4                  4
+                                                  busy   at work    1.67    0.33                    1                   3                  4
+                                                        blissful    1.75    0.75                    0                   4                  4
+                                                         fragile   -1.00    2.00                    3                   1                  4
+                                                           sunny    1.00    1.50                    2                   2                  4
+                                                      delightful    1.33    0.67                    1                   3                  4
+                                                        depleted   -1.33    0.33                    1                   3                  4
+                                                          gloomy   -1.00    0.00                    3                   1                  4
+                                                           dread   -0.67    0.33                    1                   3                  4
+                                                               0    1.33    0.00                    1                   3                  4
+                                                       wondering    0.00    1.00                    3                   1                  4
+                                                        satiated    1.00    1.33                    1                   3                  4
+                                                         related    1.00    0.00                    3                   1                  4
+                                                         dynamic    1.00    2.00                    3                   1                  4
+                                                       work soon    2.00    0.00                    3                   1                  4
+                                                watching a movie    1.00    1.00                    3                   1                  4
+                                                slightly anxious   -0.33    1.00                    1                   3                  4
+                                                           achey   -1.50    0.50                    0                   4                  4
+                                                           wired    0.00    1.75                    0                   4                  4
+                                                        composed    1.00    0.50                    2                   2                  4
+                                                       supported    0.00    0.00                    3                   1                  4
+                                                           sober    0.00    0.00                    3                   1                  4
+                                                         failure   -2.00    1.00                    3                   1                  4
+                                                          subtle    0.00    1.00                    3                   1                  4
+                                                           tipsy   -1.00    1.00                    2                   2                  4
+                                                        grieving   -1.33    0.67                    1                   3                  4
+                                                          pissed   -2.00    2.00                    3                   1                  4
+                                                         capable    1.00    2.00                    3                   1                  4
+                                                        carefree    0.00    0.00                    3                   1                  4
+                                                             ill   -2.00    0.00                    3                   1                  4
+                                                       it’s fine    0.00    1.00                    3                   1                  4
+                                                         mindful    0.00    1.67                    1                   3                  4
+                                                          uneasy   -1.00    0.50                    2                   2                  4
+                                                      i feel bad   -1.00    1.00                    3                   1                  4
+                                                       uncertain   -0.50    1.00                    2                   2                  4
+                                            a little bit nervous    0.00    2.00                    3                   1                  4
+                                                      aggravated   -1.50    1.00                    2                   2                  4
+                                                          lowkey    1.00    0.25                    0                   4                  4
+                                                          loving    1.67    1.00                    1                   3                  4
+                                                         missing    0.00    1.00                    3                   1                  4
+                                                     melancholic    0.00    1.00                    3                   1                  4
+                                                      devastated   -2.00    1.00                    2                   1                  3
+                                                      despairing   -2.00    1.00                    0                   3                  3
+                                                           drain   -2.00    0.00                    2                   1                  3
+                                                        dreadful   -2.00    0.00                    2                   1                  3
+                                                          dulled   -2.00    0.00                    2                   1                  3
+                                                            fear    2.00    0.00                    2                   1                  3
+                                                    fine i guess    0.00    1.00                    2                   1                  3
+                                                       fantastic    1.33    0.67                    0                   3                  3
+                                                             fat   -1.00    0.00                    2                   1                  3
+                                                     discouraged   -1.50    0.50                    1                   2                  3
+                                                       withdrawn    0.00    0.00                    2                   1                  3
+                                                           weary   -1.33    0.67                    0                   3                  3
+                                                         winning    1.00    0.00                    2                   1                  3
+                                                      slow night    0.00    1.00                    2                   1                  3
+                                                        achieved    1.00    0.00                    1                   2                  3
+                                                     sentimental    1.00    1.00                    1                   2                  3
+                                                       encourage    0.00    2.00                    0                   3                  3
+                                                        serenity    2.00    1.50                    1                   2                  3
+                                                            safe    0.00    0.00                    2                   1                  3
+                                                          silent    1.00    1.00                    1                   2                  3
+                                                            edgy   -0.67    1.67                    0                   3                  3
+                                                      enthusiast    2.00    0.50                    1                   2                  3
+                                                        resigned   -1.50    1.00                    1                   2                  3
+                                                            rich    1.00    1.00                    2                   1                  3
+                                                         regular    0.00    0.50                    1                   2                  3
+                                                       regretful    0.00    1.00                    2                   1                  3
+                                                            glum   -1.00    0.50                    1                   2                  3
+                                                      dehydrated   -0.50    0.50                    1                   2                  3
+                                                     stress free    2.00    0.50                    1                   2                  3
+                                                 procrastinating    1.00    1.00                    2                   1                  3
+                                                           solid    1.00    1.00                    2                   1                  3
+                                                         frantic   -2.00    2.00                    1                   2                  3
+                                                     inquisitive    1.33    1.00                    0                   3                  3
+                                                       organized    1.00    0.00                    2                   1                  3
+                                                         over it    0.00    1.00                    2                   1                  3
+                                                           sweet    1.00    1.00                    2                   1                  3
+                                                       talkative    1.00    1.33                    0                   3                  3
+                                                      conflicted   -0.50    1.00                    1                   2                  3
+                                                         comfort    2.00    0.00                    2                   1                  3
+                                                          pained   -0.33    0.00                    0                   3                  3
+                                                          insane   -2.00    1.00                    2                   1                  3
+                                                          chilly   -2.00    0.00                    1                   2                  3
+                                                   unappreciated    0.33    0.67                    0                   3                  3
+                                                        centered    1.00    1.00                    2                   1                  3
+                                                       impartial    0.00    1.00                    2                   1                  3
+                                                not feeling good   -2.00    0.00                    2                   1                  3
+                                                       invisible   -1.00    0.50                    1                   2                  3
+                                                   misunderstood   -1.00    1.33                    0                   3                  3
+                                                        tranquil    2.00    2.00                    2                   1                  3
+                                                          buzzed    1.50    1.50                    1                   2                  3
+                                                          jovial    0.50    2.00                    1                   2                  3
+                                                           jumpy    0.33    2.00                    0                   3                  3
+                                                       inspiring    0.00    1.00                    2                   1                  3
+                                                         bloated    0.00    1.00                    2                   1                  3
+                                                         leveled    1.50    0.00                    1                   2                  3
+                                                          amazed    1.00    1.33                    0                   3                  3
+                                                       leisurely    2.00    0.00                    2                   1                  3
+                                                     lightheaded    0.00    1.00                    1                   2                  3
+                                                      insightful    1.00    1.00                    1                   1                  2
+                                                          secure    0.50    1.50                    0                   2                  2
+                                             ready to make money    1.50    1.00                    0                   2                  2
+                                                    overthinking    0.00    1.00                    1                   1                  2
+                                                             nil    0.00    1.00                    0                   2                  2
+                                            in between happiness    1.00    2.00                    1                   1                  2
+                                                        accepted    1.00    2.00                    1                   1                  2
+                                                     over worked   -2.00    1.00                    0                   2                  2
+                                                       overjoyed    0.00    1.00                    1                   1                  2
+                                                        wore out    2.00    2.00                    0                   2                  2
+                                                        outgoing    1.00    0.50                    0                   2                  2
+                                                       nauseated   -2.00    1.00                    0                   2                  2
+                                                      out to eat    2.00    0.00                    1                   1                  2
+                                                          humble    1.00    1.50                    0                   2                  2
+                                                       qualified    0.00    2.00                    1                   1                  2
+                                                         yawning    0.00    0.00                    1                   1                  2
+                                                          worthy    2.00    1.00                    1                   1                  2
+                                                    motivational    0.00    2.00                    0                   2                  2
+                                                               `   -1.00    0.00                    0                   2                  2
+                                                           hoped    0.00    2.00                    1                   1                  2
+                                                       impressed    1.00    2.00                    0                   2                  2
+                                                       wiped out   -1.50    1.00                    0                   2                  2
+                                                         nuetral    0.00    0.50                    0                   2                  2
+                                                    wellprepared    0.00    1.00                    0                   2                  2
+                                                        agitated   -0.50    2.00                    0                   2                  2
+                                                           agile    1.00    2.00                    0                   2                  2
+                                                           pride    0.00    2.00                    1                   1                  2
+                                                    nothing else    0.00    0.00                    1                   1                  2
+                                                     really busy    0.00    1.00                    1                   1                  2
+                                                   it’s whatever    0.00    1.00                    1                   1                  2
+                                                       not tired    1.00    1.00                    1                   1                  2
+                                                  mentally tired   -2.00    0.00                    1                   1                  2
+                                                       home sick   -1.00    0.00                    1                   1                  2
+                                                     heartbroken   -1.00    1.00                    1                   1                  2
+                                                        enthused    0.00    2.00                    1                   1                  2
+                                                    professional    0.00    2.00                    1                   1                  2
+                                                        on point    0.00    2.00                    0                   2                  2
+                                                        massaged    0.00    1.00                    1                   1                  2
+                                                 make some money    1.00    1.00                    1                   1                  2
+                                                  not interested   -1.00    0.00                    1                   1                  2
+                                                      low energy   -0.50    0.00                    0                   2                  2
+                                                not enthusiastic   -1.00    1.00                    1                   1                  2
+                                                           fluid   -1.00    0.00                    1                   1                  2
+                                                          mobile    0.00    2.00                    0                   2                  2
+                                                        graceful    0.50    0.50                    0                   2                  2
+                                                      passionate    1.50    0.00                    0                   2                  2
+                                                       recharged    1.00    0.00                    0                   2                  2
+                                                     invigorated    1.00    0.00                    1                   1                  2
+                                                         ignored   -1.00    0.00                    0                   2                  2
+                                                            fire    2.00    0.00                    1                   1                  2
+                                                        panicked   -2.00    2.00                    1                   1                  2
+                                                        feverish    1.00    0.00                    1                   1                  2
+                                                      empathetic   -1.50    1.50                    0                   2                  2
+                                                 just getting up    2.00    0.00                    1                   1                  2
+                                                    hard working    0.00    2.00                    1                   1                  2
+                                                          placid   -2.00    0.00                    1                   1                  2
+                                                          guilty   -1.00    0.00                    1                   1                  2
+                                                          joking   -1.00    0.00                    1                   1                  2
+                                                       expectant    2.00    0.00                    0                   2                  2
+                                                       resilient    0.50    1.50                    0                   2                  2
+                                                         pensive    0.00    1.00                    0                   2                  2
+                                                         shocked   -1.00    0.00                    1                   1                  2
+                                                        engaging    0.00    1.00                    1                   1                  2
+                                                        energize    0.00    0.00                    1                   1                  2
+                                                         empathy    0.00    1.00                    1                   1                  2
+                                                           smart   -1.00    0.00                    1                   1                  2
+                                                slightly nervous    1.00    0.00                    0                   2                  2
+                                                slightly annoyed   -1.00    2.00                    1                   1                  2
+                                                        elevated    2.00    1.00                    1                   1                  2
+                                                          elated    1.50    1.00                    0                   2                  2
+                                                              eh    0.00    1.00                    1                   1                  2
+                                                       easygoing    1.00    0.50                    0                   2                  2
+                                                      easy money    0.00    1.00                    1                   1                  2
+                                                       disgusted   -1.50    1.00                    0                   2                  2
+                                                    discontented   -1.00    0.00                    0                   2                  2
+                                                         smilies    2.00    1.50                    0                   2                  2
+                                                        spirited    1.00    2.00                    1                   1                  2
+                                                      distressed   -1.00    1.00                    1                   1                  2
+                                                        distress   -1.00    1.00                    1                   1                  2
+                                                    disheartened   -1.00    1.00                    1                   1                  2
+                                                      disgusting   -1.00    0.00                    1                   1                  2
+                                                        daunting   -2.00    0.00                    1                   1                  2
+                                                           dance    0.00    2.00                    1                   1                  2
+                                                        dejected   -1.00    1.00                    1                   1                  2
+                                                           dazed   -1.50    0.00                    0                   2                  2
+                                                          sweaty    1.00    1.00                    0                   2                  2
+                                                         swamped   -1.00    1.00                    0                   2                  2
+                                                      stressfree    0.50    1.00                    0                   2                  2
+                                                   time crunched    0.00    1.00                    0                   2                  2
+                                                        thriving    1.00    1.00                    0                   2                  2
+                                                         compose    0.00    0.50                    0                   2                  2
+                                                      complacent   -1.00    0.50                    0                   2                  2
+                                                         chillin    1.00    1.00                    1                   1                  2
+                                                   understanding    0.00    1.00                    1                   1                  2
+                                                        charming    1.00    2.00                    0                   2                  2
+                                                      challenged    1.00    1.50                    0                   2                  2
+                                                        careless   -1.00    0.00                    1                   1                  2
+                                                         careful    1.00    1.00                    1                   1                  2
+                                                          unsafe   -2.00    1.00                    1                   1                  2
+                                                    uninterested   -1.00    0.00                    0                   2                  2
+                                                      bummed out    2.00    0.00                    1                   1                  2
+                                                           blank    0.00    0.00                    1                   1                  2
+                                           last 2 days of school    0.00    1.00                    0                   2                  2
+                                                       laid back    2.00    0.00                    1                   1                  2
+                                                         longing    0.00    1.00                    1                   1                  2
+                                                   little sleepy    0.00    1.00                    1                   1                  2
+                                                    affectionate    2.00    0.00                    1                   1                  2
+                                                            aged    2.00    0.00                    1                   1                  2
+                                                       adventure    0.00    2.00                    1                   1                  2
+                                                          angsty    0.00    0.00                    1                   1                  2
+                                                       ambitious    0.00    1.50                    0                   2                  2
+                                                      want a nap   -2.00    0.00                    1                   1                  2
+                                                           muted    0.00    0.00                    0                   1                  1
+                                                          morose    0.00    1.00                    0                   1                  1
+                                                        nottense    1.00    1.00                    0                   1                  1
+                                                    not troubled    0.00    1.00                    0                   1                  1
+                                                    not so happy    1.00    2.00                    0                   1                  1
+                                                     not relaxed   -1.00    0.00                    0                   1                  1
+                                         not really feeling good   -1.00    1.00                    0                   1                  1
+                                                   not motivated   -1.00    0.00                    0                   1                  1
+                                         not making shìt tonight   -1.00    0.00                    0                   1                  1
+                                                      not active    0.00    0.00                    0                   1                  1
+                                              no strong feelings    0.00    1.00                    0                   1                  1
+                                                      no opinion    0.00    1.00                    0                   1                  1
+                                                            nuts   -2.00    1.00                    0                   1                  1
+                                                             idk    0.00    2.00                    0                   1                  1
+                  i wish i’m not experiencing this at the moment   -1.00    1.00                    0                   1                  1
+                                                 i want to laugh    1.00    1.00                    0                   1                  1
+                                                    i need to go    2.00    0.00                    0                   1                  1
+                                                        hyped up    2.00    1.00                    0                   1                  1
+                                                         humored    0.00    0.00                    0                   1                  1
+                                                           humor   -2.00    0.00                    0                   1                  1
+                                                     industrious    0.00    1.00                    0                   1                  1
+                                                      indecisive    1.00    1.00                    0                   1                  1
+                                                        included    1.00    1.00                    0                   1                  1
+                                                        inactive    0.00    1.00                    0                   1                  1
+                                                     in the zone    0.00    1.00                    0                   1                  1
+                                                  in slight pain    1.00    0.00                    0                   1                  1
+                                                       over work   -1.00    0.00                    0                   1                  1
+                                                           hugry   -2.00    0.00                    0                   1                  1
+                                                           homie    2.00    1.00                    0                   1                  1
+                                                        homesick   -1.00    1.00                    0                   1                  1
+                                                    out of focus    0.00    1.00                    0                   1                  1
+                                                       on the go    0.00    2.00                    0                   1                  1
+                                                   observational    2.00    1.00                    0                   1                  1
+                                                       observant    0.00    0.00                    0                   1                  1
+                                                        paranoid   -2.00    0.00                    0                   1                  1
+                                                paper for school    0.00    1.00                    0                   1                  1
+                                                       headachey    1.00    0.00                    0                   1                  1
+         hate it when i can’t reach something i wish to get done   -1.00    1.00                    0                   1                  1
+                                                           hapoy    1.00    1.00                    0                   1                  1
+                                                          greasy   -1.00    0.00                    0                   1                  1
+                                                            grea    0.00    2.00                    0                   1                  1
+                                                        pampered    1.00    1.00                    0                   1                  1
+                                                      overweight    0.00    1.00                    0                   1                  1
+                                                       overtired    2.00    0.00                    0                   1                  1
+                                                         prayers   -2.00    1.00                    0                   1                  1
+                                                         postive    1.00    2.00                    0                   1                  1
+                                                           posed    1.00    1.00                    0                   1                  1
+                                                         playful    1.00    1.00                    0                   1                  1
+                                                            gray    0.00    1.00                    0                   1                  1
+                                                        gracious    2.00    0.00                    0                   1                  1
+                                               going to work now    1.00    1.00                    0                   1                  1
+                                               getting dat money    0.00    2.00                    0                   1                  1
+                                                        generous    0.00    0.00                    0                   1                  1
+                                                           plain    0.00    1.00                    0                   1                  1
+                                                       picked on    0.00    1.00                    0                   1                  1
+                                                     perseverant   -1.00    0.00                    0                   1                  1
+                                                      purposeful    0.00    1.00                    0                   1                  1
+                                                          puddle   -1.00    0.00                    0                   1                  1
+                                                       promising    1.00    1.00                    0                   1                  1
+                                                      production    0.00    2.00                    0                   1                  1
+                                                           gassy   -1.00    2.00                    0                   1                  1
+                                                         fulfill    2.00    0.00                    0                   1                  1
+                                                          friyay    1.00    0.00                    0                   1                  1
+                                                          freeze    0.00    0.00                    0                   1                  1
+                                                       proactive    2.00    1.00                    0                   1                  1
+                                                      principled    1.00    1.00                    0                   1                  1
+                                                        preserve    0.00    1.00                    0                   1                  1
+                                                     preoccupied   -2.00    1.00                    0                   1                  1
+                                                  falling asleep   -2.00    0.00                    0                   1                  1
+                                                      fabulous s    2.00    0.00                    0                   1                  1
+                                                       exuberant    2.00    1.00                    0                   1                  1
+                                                      expressive    1.00    2.00                    0                   1                  1
+                                      expectant of possibilities    1.00    1.00                    0                   1                  1
+                                                          exotic    2.00    2.00                    0                   1                  1
+                                                          foodie   -2.00    0.00                    0                   1                  1
+                                                       flustered   -2.00    1.00                    0                   1                  1
+                                                          fitted    0.00    1.00                    0                   1                  1
+                                                 feeling natural    0.00    0.00                    0                   1                  1
+       feeling like something is wrong but can’t figure out what   -1.00    1.00                    0                   1                  1
+                                                        enriched    1.00    1.00                    0                   1                  1
+                                                  running behind    0.00    1.00                    0                   1                  1
+                                                        restored    0.00    1.00                    0                   1                  1
+                                                       respected    0.00    2.00                    0                   1                  1
+                                                        reslient    0.00    1.00                    0                   1                  1
+                                                      resentment   -2.00    0.00                    0                   1                  1
+                                                       remoseful    2.00    2.00                    0                   1                  1
+                                                       reluctant    1.00    2.00                    0                   1                  1
+                                                         relived   -1.00    0.00                    0                   1                  1
+                                                        releived    1.00    1.00                    0                   1                  1
+                                                       rejoicing    2.00    1.00                    0                   1                  1
+                                                       refueling   -1.00    2.00                    0                   1                  1
+                                                          reflex    0.00    1.00                    0                   1                  1
+                                                         sedated    0.00    0.00                    0                   1                  1
+                                                          peeved    0.00    1.00                    0                   1                  1
+                                              school almost over    1.00    2.00                    0                   1                  1
+                                                          sapped   -2.00    0.00                    0                   1                  1
+                                           sad (death in family)    2.00    1.00                    0                   1                  1
+                                                          sacred   -2.00    1.00                    0                   1                  1
+                                                         rushing    0.00    1.00                    0                   1                  1
+                                                         exicted    2.00    1.00                    0                   1                  1
+                                                     exhilerated    1.00    1.00                    0                   1                  1
+                                                         exerted   -2.00    0.00                    0                   1                  1
+                                                       exercised    2.00    0.00                    0                   1                  1
+                                                        excitied    2.00    1.00                    0                   1                  1
+                                                          excite    1.00    1.00                    0                   1                  1
+                                                       excellent    2.00    2.00                    0                   1                  1
+                                                     enthusiasts    2.00    0.00                    0                   1                  1
+                                   slight pain from my left foot    1.00    0.00                    0                   1                  1
+                                                     slight pain    2.00    0.00                    0                   1                  1
+                                             sitting with nature    0.00    1.00                    0                   1                  1
+                                                           silly    2.00    1.00                    0                   1                  1
+                                                    a bit joyful    1.00    2.00                    0                   1                  1
+                                                          shakey    2.00    0.00                    0                   1                  1
+                                                       sensitive   -1.00    1.00                    0                   1                  1
+                                                      segregated    2.00    2.00                    0                   1                  1
+                                              enjoying fresh air    0.00    1.00                    0                   1                  1
+                                    a little excited for weekend   -1.00    2.00                    0                   1                  1
+                                                       enervated   -2.00    0.00                    0                   1                  1
+                                             a touch pessimistic   -1.00    0.00                    0                   1                  1
+                                                        energies    2.00    0.00                    0                   1                  1
+                                                     encouraging    0.00    1.00                    0                   1                  1
+                                                        emptionl    0.00    2.00                    0                   1                  1
+                                                    abit worried    2.00    0.00                    0                   1                  1
+                                                   above average    1.00    1.00                    0                   1                  1
+                                                         sloooow    0.00    1.00                    0                   1                  1
+                                                  slightly tense    1.00    1.00                    0                   1                  1
+                                                   accommodative    1.00    2.00                    0                   1                  1
+                                                slightly in pain    1.00    0.00                    0                   1                  1
+                                                         wistful   -1.00    1.00                    0                   1                  1
+                                                   slightly achy    1.00    0.00                    0                   1                  1
+                                         emotionally unavailable    1.00    2.00                    0                   1                  1
+                                               emotionally tired   -2.00    0.00                    0                   1                  1
+                                            work last night late    0.00    1.00                    0                   1                  1
+                                                         limited    2.00    0.00                    0                   1                  1
+                                                           zoned    1.00    0.00                    0                   1                  1
+                                                    effervescent    1.00    2.00                    0                   1                  1
+                                                           edgey   -2.00    2.00                    0                   1                  1
+                                                             zen    1.00    0.00                    0                   1                  1
+                                                          zapped   -1.00    0.00                    0                   1                  1
+                                                               ?   -2.00    0.00                    0                   1                  1
+                                                   worried still    2.00    0.00                    0                   1                  1
+                                                somewhat relaxed    1.00    0.00                    0                   1                  1
+                                                somewhat hopeful    0.00    1.00                    0                   1                  1
+                                                socially drained    0.00    0.00                    0                   1                  1
+                                                        sociable    1.00    1.00                    0                   1                  1
+                                                     so so happy    2.00    0.00                    0                   1                  1
+                                                          sneezy    1.00    0.00                    0                   1                  1
+                                                          snacky    1.00    2.00                    0                   1                  1
+                                                          driven    2.00    2.00                    0                   1                  1
+                                                          dreamy    0.00    2.00                    0                   1                  1
+                                                        downcast   -2.00    0.00                    0                   1                  1
+                                                        doubtful    0.00    1.00                    0                   1                  1
+                                                          doomed   -2.00    1.00                    0                   1                  1
+                                            worried about grades    2.00    0.00                    0                   1                  1
+                                                          smiley    0.00    1.00                    0                   1                  1
+                                            still tired in a way    1.00    1.00                    0                   1                  1
+                                                          sticky   -1.00    0.00                    0                   1                  1
+                                                         starved    0.00    1.00                    0                   1                  1
+                                                        stagnant    0.00    1.00                    0                   1                  1
+                                                     spontaneous    2.00    1.00                    0                   1                  1
+                                                          winded    0.00    1.00                    0                   1                  1
+                                                spacey/brain fog   -1.00    0.00                    0                   1                  1
+                                                       sorrowful   -2.00    1.00                    0                   1                  1
+                                                           legit    2.00    0.00                    0                   1                  1
+i’m not bursting with energy but i’m waking with a gentle enthus    1.00    1.00                    0                   1                  1
+                                                    disrnchanted   -1.00    0.00                    0                   1                  1
+                                                    disrespected   -1.00    1.00                    0                   1                  1
+                                                    disorganized   -1.00    2.00                    0                   1                  1
+                                                          dismay   -1.00    1.00                    0                   1                  1
+                                    i’m alive and i’m feeling it    1.00    1.00                    0                   1                  1
+                                                     mischievous    2.00    2.00                    0                   1                  1
+                                                     daydreaming    0.00    1.00                    0                   1                  1
+                                              mentally exhausted   -2.00    0.00                    0                   1                  1
+                                 mentally and physically drained   -2.00    0.00                    0                   1                  1
+                                                            cslm    2.00    2.00                    0                   1                  1
+                                                         cramped   -1.00    0.00                    0                   1                  1
+                                                      courageous    0.00    1.00                    0                   1                  1
+                                                          cotent    1.00    0.00                    0                   1                  1
+                                                     coordinated    1.00    2.00                    0                   1                  1
+                                                         context    2.00    0.00                    0                   1                  1
+                                                     disapointed   -2.00    1.00                    0                   1                  1
+                                                       determine   -2.00    0.00                    0                   1                  1
+                                                        desolate   -2.00    1.00                    0                   1                  1
+                                                          demure    1.00    1.00                    0                   1                  1
+                                                        meditate    2.00    1.00                    0                   1                  1
+                                                          meager    1.00    1.00                    0                   1                  1
+                                                   strenghthened    1.00    2.00                    0                   1                  1
+                                                        talented    0.00    1.00                    0                   1                  1
+                                                        s’get it    0.00    2.00                    0                   1                  1
+                                                     sympathetic   -1.00    1.00                    0                   1                  1
+                                                          mature    1.00    2.00                    0                   1                  1
+                                                        lukewarm    0.00    1.00                    0                   1                  1
+                                                        suspense    2.00    2.00                    0                   1                  1
+                                                    contemplated   -1.00    1.00                    0                   1                  1
+                                                     considerate    0.00    1.00                    0                   1                  1
+                                                        confided    2.00    0.00                    0                   1                  1
+                                                    concentrated    1.00    2.00                    0                   1                  1
+                                                      suppressed   -1.00    1.00                    0                   1                  1
+                                                       sunburned    2.00    0.00                    0                   1                  1
+                                                         studios    0.00    1.00                    0                   1                  1
+                                                   loving/caring    0.00    0.00                    0                   1                  1
+                                           stressed about school    1.00    2.00                    0                   1                  1
+                                          stressed about a paper    2.00    0.00                    0                   1                  1
+                                     triggered (eating disotder)   -1.00    2.00                    0                   1                  1
+                                                         trapped   -2.00    1.00                    0                   1                  1
+                                                     transparent    1.00    1.00                    0                   1                  1
+                                                         touched    0.00    2.00                    0                   1                  1
+                                                     less energy   -2.00    0.00                    0                   1                  1
+                                                it’s my monday !    0.00    1.00                    0                   1                  1
+                                                      threatened   -2.00    2.00                    0                   1                  1
+                                                           itchy    0.00    1.00                    0                   1                  1
+                                          is the week over yet ?   -1.00    0.00                    0                   1                  1
+                                                     competitive    1.00    1.00                    0                   1                  1
+                                                   communicative    1.00    0.00                    0                   1                  1
+                                                       comforted    1.00    1.00                    0                   1                  1
+                                                       introvert    2.00    2.00                    0                   1                  1
+                                              things left unsaid   -1.00    1.00                    0                   1                  1
+                                                       tentative    0.00    1.00                    0                   1                  1
+                                                        teamwork    1.00    0.00                    0                   1                  1
+                                                  unenthusiastic   -2.00    0.00                    0                   1                  1
+                                                      understood    1.00    2.00                    0                   1                  1
+                                                       intrigued    1.00    2.00                    0                   1                  1
+                                                  under pressure    1.00    2.00                    0                   1                  1
+                                                       undecided    0.00    1.00                    0                   1                  1
+                                                           twist    0.00    1.00                    0                   1                  1
+                                                        truthful    2.00    1.00                    0                   1                  1
+                                                     chilled out    2.00    0.00                    0                   1                  1
+                                                          cherry    2.00    0.00                    0                   1                  1
+                                                     inspiration    2.00    2.00                    0                   1                  1
+                                                   a bit hopeful   -1.00    0.00                    0                   1                  1
+                                                     just myself    0.00    1.00                    0                   1                  1
+                                                          judged    2.00    2.00                    0                   1                  1
+                                                          candid    0.00    0.00                    0                   1                  1
+                                               calm before storm    1.00    0.00                    0                   1                  1
+                                                triggered (ptsd)   -1.00    2.00                    0                   1                  1
+                                                          unseen   -2.00    0.00                    0                   1                  1
+                                                        jubilant    2.00    1.00                    0                   1                  1
+                                                    unproductive   -2.00    0.00                    0                   1                  1
+                                                      unprepared    1.00    2.00                    0                   1                  1
+                                                      joy filled    2.00    1.00                    0                   1                  1
+                                                      uninspired    0.00    1.00                    0                   1                  1
+                                                     unfulfilled    0.00    1.00                    0                   1                  1
+                                                           callm    1.00    0.00                    0                   1                  1
+                                                        busy bee    0.00    1.00                    0                   1                  1
+                                                          jazzed    2.00    1.00                    0                   1                  1
+                                                      brighteyed   -1.00    0.00                    0                   1                  1
+                                                           brave    0.00    2.00                    0                   1                  1
+                                                      brain dead   -1.00    1.00                    0                   1                  1
+                                                         bookish    1.00    0.00                    0                   1                  1
+                                                            bold    0.00    2.00                    0                   1                  1
+                                                       unexcited    0.00    1.00                    0                   1                  1
+                                                           vexed   -2.00    0.00                    0                   1                  1
+                                                       validated    2.00    0.00                    0                   1                  1
+                                                          useful    1.00    2.00                    0                   1                  1
+                                                         ayaight    0.00    2.00                    0                   1                  1
+                                                          awaken    0.00    2.00                    0                   1                  1
+                                                         average    0.00    1.00                    0                   1                  1
+                                                    at my lowest   -2.00    1.00                    0                   1                  1
+                                                        at alert    0.00    2.00                    0                   1                  1
+                                                    aspirational    2.00    2.00                    0                   1                  1
+                                        no more school right now    1.00    1.00                    0                   1                  1
+                                                           blahh    1.00    2.00                    0                   1                  1
+                                                        bittered   -1.00    1.00                    0                   1                  1
+                                                        betrayed   -2.00    1.00                    0                   1                  1
+                                                        belief .    0.00    2.00                    0                   1                  1
+                                                    unsuccessful   -2.00    1.00                    0                   1                  1
+                                                        unstable   -1.00    0.00                    0                   1                  1
+                                                           vibes    1.00    0.00                    0                   1                  1
+                                              late on schoolwork    1.00    0.00                    0                   1                  1
+                                              last day of school    0.00    1.00                    0                   1                  1
+                                                  no more papers    1.00    1.00                    0                   1                  1
+                                                     no feelings    0.00    1.00                    0                   1                  1
+                                                      lackluster   -1.00    0.00                    0                   1                  1
+                                                      kinda busy    0.00    2.00                    0                   1                  1
+                                                   kind of happy    1.00    0.00                    0                   1                  1
+                                                       losing it   -2.00    1.00                    0                   1                  1
+                                                      no feeling    0.00    1.00                    0                   1                  1
+                                                     living good    2.00    1.00                    0                   1                  1
+                                                        nitpicky    1.00    2.00                    0                   1                  1
+                                                     little lazy    0.00    1.00                    0                   1                  1
+                                                    little bored    1.00    1.00                    0                   1                  1
+                                                      listlessly   -2.00    0.00                    0                   1                  1
+                                                          neural    0.00    1.00                    0                   1                  1
+                                         need to study for exams    1.00    1.00                    0                   1                  1
+                                                      need sleep    1.00    2.00                    0                   1                  1
+                                                          aching    1.00    1.00                    0                   1                  1
+                                                       apathetic    0.00    1.00                    0                   1                  1
+                                                        animated    0.00    1.00                    0                   1                  1
+                                                       need rest    0.00    0.00                    0                   1                  1
+                                                       anamosity   -1.00    0.00                    0                   1                  1
+                                                          amused    1.00    1.00                    0                   1                  1
+                                                      ambivalent    0.00    0.00                    0                   1                  1
+                                                        mystical   -2.00    0.00                    0                   1                  1
+                                               want to check out    0.00    1.00                    0                   1                  1
+                                        my senses are heightened    1.00    1.00                    0                   1                  1
+                                                          vining    2.00    0.00                    0                   1                  1
+                                                        vigorous    0.00    2.00                    0                   1                  1
+                                                          vibing    0.00    1.00                    0                   1                  1
+                                                       zoned out   -1.00    0.00                    0                   1                  1
+
+[4] DISTRIBUZIONE COPPIE AROUSAL/VALENCE (Dataset completo):
+ arousal  valence  quantita
+     1.0      0.0       473
+     0.0      2.0       361
+     0.0     -2.0       272
+     1.0      1.0       258
+     2.0      0.0       247
+     0.0     -1.0       222
+     0.0      1.0       188
+     0.0      0.0       172
+     1.0      2.0       158
+     2.0      1.0        92
+     1.0     -1.0        81
+     2.0     -1.0        74
+     2.0      2.0        69
+     1.0     -2.0        52
+     2.0     -2.0        45
+
+============================================================
