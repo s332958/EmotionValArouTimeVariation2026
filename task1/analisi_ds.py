@@ -1,9 +1,13 @@
 import pandas as pd
 import re
 import sys
+import os
 from collections import Counter
 
 def analizza_dataset(file_path, output_file="task1/report/dataset_analisi.txt"):
+    # Creazione della cartella di output se non esiste
+    os.makedirs(os.path.dirname(output_file), exist_ok=True)
+
     # Caricamento del dataset
     try:
         df = pd.read_csv(file_path)
@@ -18,13 +22,17 @@ def analizza_dataset(file_path, output_file="task1/report/dataset_analisi.txt"):
             print(text)
             f.write(str(text) + "\n")
 
-        dual_print("="*60)
+        dual_print("="*75)
         dual_print("                REPORT DETTAGLIATO DATASET")
-        dual_print("="*60)
+        dual_print("="*75)
 
-        # 1. Statistiche Generali e Media Frasi per Utente
+        # Pre-elaborazione colonna booleana
+        df['is_words_bool'] = df['is_words'].astype(str).str.lower() == 'true'
+
+        # 1. Statistiche Generali
         n_utenti = df['user_id'].nunique()
-        n_totale_frasi = len(df)
+        n_totale_righe = len(df)
+        
         frasi_per_utente_ser = df.groupby('user_id').size()
         media_frasi_utente = frasi_per_utente_ser.mean()
 
@@ -33,20 +41,33 @@ def analizza_dataset(file_path, output_file="task1/report/dataset_analisi.txt"):
 
         dual_print(f"\n[1] STATISTICHE GENERALI:")
         dual_print(f"- Numero di utenti unici: {n_utenti}")
-        dual_print(f"  > Utenti con meno di 10 frasi: {utenti_meno_10}")
-        dual_print(f"  > Utenti con 10 o più frasi: {utenti_10_o_piu}")
-        dual_print(f"- Numero totale di righe (frasi + liste): {n_totale_frasi}")
+        dual_print(f"  > Utenti con meno di 10 righe: {utenti_meno_10}")
+        dual_print(f"  > Utenti con 10 o più righe: {utenti_10_o_piu}")
+        dual_print(f"- Numero totale di righe nel file: {n_totale_righe}")
         dual_print(f"- Media righe per utente: {media_frasi_utente:.2f}")
 
-        # 2. Numero di frasi per ogni utente
-        dual_print("\n[2] DETTAGLIO RIGHE PER UTENTE:")
-        df_utenti = frasi_per_utente_ser.reset_index(name='num_frasi')
-        df_utenti = df_utenti.sort_values(by='num_frasi', ascending=False)
-        dual_print(df_utenti.to_string(index=False))
+        # 2. Dettaglio Utenti (Modificato per mostrare is_words vs frasi)
+        dual_print("\n[2] DETTAGLIO ATTIVITÀ PER UTENTE:")
+        
+        # Creiamo una tabella pivot per contare is_words e frasi normali
+        utente_stats = df.groupby(['user_id', 'is_words_bool']).size().unstack(fill_value=0)
+        
+        # Rinominiamo le colonne per chiarezza (gestendo il caso in cui manchino True o False)
+        if True not in utente_stats.columns: utente_stats[True] = 0
+        if False not in utente_stats.columns: utente_stats[False] = 0
+        
+        utente_stats = utente_stats.rename(columns={True: 'Liste_Parole', False: 'Frasi_Normali'})
+        
+        # Aggiungiamo il totale
+        utente_stats['Totale'] = utente_stats['Liste_Parole'] + utente_stats['Frasi_Normali']
+        
+        # Ordiniamo per il totale decrescente
+        utente_stats = utente_stats.sort_values(by='Totale', ascending=False).reset_index()
+        
+        dual_print(utente_stats.to_string(index=False))
 
         # 3. Analisi delle parole (is_words == True)
-        df['is_words'] = df['is_words'].astype(str).str.lower() == 'true'
-        df_is_words_true = df[df['is_words'] == True].copy()
+        df_is_words_true = df[df['is_words_bool'] == True].copy()
         
         dati_parole_singole = []
         tutte_le_parole_in_liste = []
@@ -75,7 +96,7 @@ def analizza_dataset(file_path, output_file="task1/report/dataset_analisi.txt"):
             set_parole_target = set(stats_parole['parola'])
 
             # 4. Conteggio occorrenze nelle frasi comuni (is_words == False)
-            frasi_corpus = df[df['is_words'] == False]['text'].dropna().astype(str).tolist()
+            frasi_corpus = df[df['is_words_bool'] == False]['text'].dropna().astype(str).tolist()
             conteggio_nelle_frasi = Counter()
             
             for parola in set_parole_target:
@@ -108,7 +129,7 @@ def analizza_dataset(file_path, output_file="task1/report/dataset_analisi.txt"):
         dual_print("\n[4] DISTRIBUZIONE COPPIE AROUSAL/VALENCE (Dataset completo):")
         coppie_count = df.groupby(['arousal', 'valence']).size().reset_index(name='quantita')
         dual_print(coppie_count.sort_values(by='quantita', ascending=False).to_string(index=False))
-        dual_print("\n" + "="*60)
+        dual_print("\n" + "="*75)
     
     print(f"\nAnalisi completata! Il report è stato salvato in: {output_file}")
 

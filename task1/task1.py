@@ -22,10 +22,12 @@ parser.add_argument("--epochs", type=int, default=10, help="Number of epochs")
 parser.add_argument("--user_emb_dim", type=int, default=32, help="User embedding dimension")
 parser.add_argument("--hidden_dim", type=int, default=128, help="Hidden layer dimension")
 parser.add_argument("--dropout", type=float, default=0.2, help="Dropout rate")
+parser.add_argument("--freeze_roberta", action="store_true", help="Freeze roberta weights")
 parser.add_argument("--save_path", type=str, default="best_model_task1_user_emb.pth", help="Model save path")
 parser.add_argument("--train_path", type=str, default="data/train_subtask1.csv", help="Train data path")
 parser.add_argument("--test_path", type=str, default="data/test_subtask1.csv", help="Test data path")
 parser.add_argument("--random_state", type=int, default=0, help="Random seed")
+parser.add_argument("--remove_id_less_user", type=int, default=0, help="Set id to 0 from the user that have less than N comments")
 
 # "roberta-base", "cardiffnlp/twitter-roberta-base-emotion, SamLowe/roberta-base-go_emotions
 
@@ -45,12 +47,14 @@ EPOCHS = args.epochs
 USER_EMB_DIM = args.user_emb_dim
 HIDDEN_DIM = args.hidden_dim
 DROPOUT = args.dropout
+FREEZE_ROBERTA = args.freeze_roberta
 
 SAVE_PATH = args.save_path
 TRAIN_PATH = args.train_path
 TEST_PATH = args.test_path
 
 RANDOM_STATE = args.random_state
+N_COMMENTS = args.remove_id_less_user
 
 # Importante per la riproducibilità
 torch.manual_seed(RANDOM_STATE)
@@ -152,13 +156,19 @@ class AffectTestDataset(Dataset):
 class AffectModelWithUserEmb(nn.Module):
     def __init__(self):
         super().__init__()
+        actual_freeze = FREEZE_ROBERTA
         
         if MODEL_NAME == "":
             config = RobertaConfig.from_pretrained("roberta-base")
             model = RobertaModel(config)
             self.roberta = model
+            actual_freeze = False
         else:
             self.roberta = AutoModel.from_pretrained(MODEL_NAME)
+
+        if actual_freeze == True:
+            for param in self.roberta.parameters():
+                param.requires_grad = False
 
         if USER_EMB_DIM >0:
             self.user_emb = nn.Embedding(num_users + 1, USER_EMB_DIM, padding_idx=0)
@@ -221,9 +231,13 @@ val_loader = DataLoader(AffectDataset(val_df), batch_size=BATCH_SIZE)
 optimizer = AdamW(model.parameters(), lr=LR)
 criterion = nn.SmoothL1Loss(beta=0.5)  # HUBER
 
+trainable_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
+print(f"Parametri allenabili: {trainable_params}")
+
 best_score = -1
 
 for epoch in range(1, EPOCHS + 1):
+
     model.train()
     total_loss = 0.0
 
