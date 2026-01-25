@@ -5,6 +5,9 @@ import seaborn as sns
 from collections import Counter
 import os
 
+PHRASE_X_USER = 10
+COUNT_WORD_IN_PHRASE = 10
+
 def analizza_e_visualizza(file_path):
     # Creazione cartella immagini se non esiste
     os.makedirs('task1/img', exist_ok=True)
@@ -28,8 +31,8 @@ def analizza_e_visualizza(file_path):
 
     # Statistiche Utenti
     frasi_per_utente = df.groupby('user_id').size()
-    u_meno_10 = (frasi_per_utente < 10).sum()
-    u_10_piu = (frasi_per_utente >= 10).sum()
+    u_meno_10 = (frasi_per_utente < PHRASE_X_USER).sum()
+    u_10_piu = (frasi_per_utente >= PHRASE_X_USER).sum()
 
     # Analisi Parole Target (is_words == True)
     df_is_words_true = df[df['is_words_bool'] == True].copy()
@@ -50,8 +53,8 @@ def analizza_e_visualizza(file_path):
             if trovati:
                 conteggio_nelle_frasi[parola] += len(trovati)
     
-    p_meno_30 = sum(1 for p in set_parole_target if conteggio_nelle_frasi[p] < 30)
-    p_30_piu = sum(1 for p in set_parole_target if conteggio_nelle_frasi[p] >= 30)
+    p_meno_30 = sum(1 for p in set_parole_target if conteggio_nelle_frasi[p] < PHRASE_X_USER)
+    p_30_piu = sum(1 for p in set_parole_target if conteggio_nelle_frasi[p] >= PHRASE_X_USER)
 
     # Funzione di supporto per aggiungere i numeri sopra le barre
     def add_labels(ax):
@@ -78,18 +81,18 @@ def analizza_e_visualizza(file_path):
 
     # 2. Grafico Utenti
     plt.figure(figsize=(8, 6))
-    ax1 = sns.barplot(x=['< 10 righe', '>= 10 righe'], y=[u_meno_10, u_10_piu], palette='viridis')
+    ax1 = sns.barplot(x=[f'< {PHRASE_X_USER} righe', f'>= {PHRASE_X_USER} righe'], y=[u_meno_10, u_10_piu], palette='viridis')
     add_labels(ax1)
-    plt.title('Attività Utenti (Soglia 10)')
+    plt.title(f'Attività Utenti (Soglia {PHRASE_X_USER})')
     plt.ylabel('Numero di Utenti')
     plt.savefig('task1/img/grafico_utenti.png', bbox_inches='tight')
     plt.show()
 
     # 3. Grafico Parole
     plt.figure(figsize=(8, 6))
-    ax2 = sns.barplot(x=['< 30 occorr.', '>= 30 occorr.'], y=[p_meno_30, p_30_piu], palette='magma')
+    ax2 = sns.barplot(x=[f'< {COUNT_WORD_IN_PHRASE} occorr.', f'>= {COUNT_WORD_IN_PHRASE} occorr.'], y=[p_meno_30, p_30_piu], palette='magma')
     add_labels(ax2)
-    plt.title('Frequenza Parole Target nelle Frasi (Soglia 30)')
+    plt.title(f'Frequenza Parole Target nelle Frasi (Soglia {COUNT_WORD_IN_PHRASE})')
     plt.ylabel('Numero di Parole')
     plt.savefig('task1/img/grafico_parole.png', bbox_inches='tight')
     plt.show()
