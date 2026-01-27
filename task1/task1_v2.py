@@ -344,6 +344,9 @@ def traing(device, train_df, val_df, batch_size, learning_rate, epochs, sigma, m
 # FINAL INFERENCE
 # ------------------------
 def testing(device, model_path, test_ds_path, user_to_idx, batch_size, sigma, mu, tokenizer, max_len, model):
+    if test_ds_path == "":
+        return
+    
     model.to(device)
     
     model.load_state_dict(torch.load(model_path))
@@ -382,7 +385,7 @@ def testing(device, model_path, test_ds_path, user_to_idx, batch_size, sigma, mu
 
 
 def argument():
-    # "roberta-base", "cardiffnlp/twitter-roberta-base-emotion, SamLowe/roberta-base-go_emotions
+    
     parser = argparse.ArgumentParser(description="Affect Model Training Configuration")
 
     parser.add_argument("--model_name", type=str, default="roberta-base", help="HuggingFace model name")
@@ -443,7 +446,7 @@ def main():
     args = argument()
 
     DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
-
+    # "roberta-base", "cardiffnlp/twitter-roberta-base-emotion, SamLowe/roberta-base-go_emotions
     MODEL_NAME = args.model_name
     MAX_LEN = args.max_len
     BATCH_SIZE = args.batch_size
