@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 from scipy.stats import pearsonr
 import argparse
 import random
+import os
 
 # ------------------------
 # LOAD DATA
@@ -263,9 +264,7 @@ def create_model_and_tokenizer(encoder_model_name, block_encoder_weights, hidden
 # ------------------------
 # TRAINING
 # ------------------------
-def traing(device, train_df, val_df, batch_size, learning_rate, epochs, sigma, mu, save_model_path, 
-           tokenizer, max_len, 
-           model):
+def traing(device, train_df, val_df, batch_size, learning_rate, epochs, sigma, mu, save_model_path, tokenizer, max_len, model):
     
     model.to(device)
 
@@ -279,6 +278,7 @@ def traing(device, train_df, val_df, batch_size, learning_rate, epochs, sigma, m
     print(f"Parametri allenabili: {trainable_params}")
 
     best_score = -1
+    best_epoch = -1
 
     for epoch in range(1, epochs + 1):
 
@@ -330,19 +330,20 @@ def traing(device, train_df, val_df, batch_size, learning_rate, epochs, sigma, m
 
         if avg > best_score:
             best_score = avg
+            best_val = rv
+            best_aro = ra
+            best_epoch = epoch
             torch.save(model.state_dict(), save_model_path)
             print(" → Saved best model")
 
-    print("Best avg r_composite:", best_score)
+    print(f"Best model at epoch: {best_epoch:4d}  -> avg r_composite: {best_score:6.4f} with Valence: {best_val:6.4f} and Arousal: {best_aro:6.4f}")
+    return best_epoch, best_val, best_aro, best_score
 
 
 # ------------------------
 # FINAL INFERENCE
 # ------------------------
-def testing(device, model_path, test_ds_path, user_to_idx, batch_size,sigma,mu, 
-            tokenizer, max_len, 
-            model):
-    
+def testing(device, model_path, test_ds_path, user_to_idx, batch_size, sigma, mu, tokenizer, max_len, model):
     model.to(device)
     
     model.load_state_dict(torch.load(model_path))
@@ -403,6 +404,40 @@ def argument():
     return parser.parse_args()
 
 
+def write_training_report(
+    fine_report_name,
+    model_name, max_len, batch_size, learing_rate, hidden_dim, dropout,
+    user_embedding_dim, freeze_encoder,
+    filter_few_comments_user, augment_dataset,
+    random_state, best_epoch,
+    best_valence_value, best_arousal_value, best_mean_value
+):
+    file_exists = os.path.isfile(fine_report_name)
+
+    headers = [
+        "model_name", "max_len", "batch_size", "learing_rate", "hidden_dim",
+        "dropout", "user_embedding_dim", "freeze_encoder",
+        "filter_few_comments_user", "augment_dataset",
+        "random_state", "best_epoch",
+        "best_valence_value", "best_arousal_value", "best_mean_value"
+    ]
+
+    values = [
+        model_name, max_len, batch_size, learing_rate, hidden_dim,
+        dropout, user_embedding_dim, freeze_encoder,
+        filter_few_comments_user, augment_dataset,
+        random_state, best_epoch,
+        best_valence_value, best_arousal_value, best_mean_value
+    ]
+
+    with open(fine_report_name, "a", encoding="utf-8") as f:
+        # Se il file non esiste, scrive l'header
+        if not file_exists:
+            f.write(",".join(headers) + "\n")
+
+        # Scrive i valori
+        f.write(",".join(map(str, values)) + "\n")
+
 def main():
 
     args = argument()
@@ -436,7 +471,10 @@ def main():
         train_df = augment_word_lists(train_df, AUGMENT_DATASET_VALUE)
         print(f"Number of elments after augmentation in training dataset: {len(train_df)}")
     model, tokenizer = create_model_and_tokenizer(MODEL_NAME, FREEZE_ENCODER, HIDDEN_DIM, DROPOUT, USER_EMB_DIM, num_users)
-    traing(DEVICE, train_df, val_df, BATCH_SIZE, LR, EPOCHS, sigma, mu, SAVE_BEST_MODEL_PATH, tokenizer, MAX_LEN, model)
+    best_epoch, best_valence, best_arousal, best_score = traing(DEVICE, train_df, val_df, BATCH_SIZE, LR, EPOCHS, sigma, mu, SAVE_BEST_MODEL_PATH, tokenizer, MAX_LEN, model)
+    write_training_report("task1/report/report_training_file.csv",
+                          MODEL_NAME, MAX_LEN, BATCH_SIZE, LR, HIDDEN_DIM, DROPOUT, USER_EMB_DIM, FREEZE_ENCODER, N_COMMENTS_TO_BE_KNOW, AUGMENT_DATASET_VALUE, RANDOM_STATE,
+                          best_epoch, best_valence, best_arousal, best_score)
     testing(DEVICE, SAVE_BEST_MODEL_PATH, TEST_PATH, user_to_idx, BATCH_SIZE, sigma, mu, tokenizer, MAX_LEN, model)
 
 
