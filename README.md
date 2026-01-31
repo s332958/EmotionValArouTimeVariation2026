@@ -17,7 +17,7 @@ EmotionValArouTimeVariation2026/
 │   ├── train_subtask2a.csv
 │   ├── subtask2a_forecasting_user_marker.csv
 │   ├── train_subtask2b_detailed.csv
-│   └── subtask2b_forecasting_user_marker.csv
+│   ├──subtask2b_forecasting_user_marker.csv
 │   └── train_subtask1.csv
 ├── task1/
 │   └── task1.py
