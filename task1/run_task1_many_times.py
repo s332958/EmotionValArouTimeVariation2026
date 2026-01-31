@@ -18,7 +18,6 @@ FREEZE_ENCODER = False
 
 SAVE_BEST_MODEL_PATH = "best_model.pth"
 TRAIN_PATH = "datasets/train_subtask1.csv"
-TEST_PATH = "" #"datasets/train_subtask1.csv"
 
 RANDOM_STATE = [0, 100, 200, 300]
 N_COMMENTS_TO_BE_KNOW = [0, 10]

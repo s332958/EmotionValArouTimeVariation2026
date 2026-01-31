@@ -1,3 +1,47 @@
+# EmotionValArouTimeVariation2026 — Task 2 (Subtask 1)
+
+For running the task1 is needed to install the following libraries:
+- pandas
+- numpy
+- torch 
+- transformer
+- scikit-learn
+- scipy
+
+```
+pip install pandas numpy torch transformers scikit-learn scipy
+```
+
+The script **`task1/task1.py`** supports the following command-line arguments to customize the training and inference process:
+
+* **Model & Architecture Configuration**
+    * `--model_name`: The HuggingFace pre-trained model to use (e.g., `roberta-base`).
+    * `--user_emb_dim`: Dimensionality of the user embedding vector. Set to 0 to disable user-specific modeling.
+    * `--hidden_dim`: Dimensionality of the hidden layer in the final MLP regressor.
+    * `--dropout`: Dropout rate applied to the MLP to prevent overfitting.
+    * `--max_len`: Maximum sequence length for tokenization.
+    * `--freeze_encoder`: If provided, freezes the weights of the transformer encoder, training only the regression head.
+
+* **Training Hyperparameters**
+    * `--batch_size`: Number of samples per training batch.
+    * `--lr`: Learning rate for the AdamW optimizer.
+    * `--epochs`: Total number of training epochs.
+    * `--random_state`: Random seed for reproducibility of splits and weight initialization.
+
+* **Data Paths & Processing**
+    * `--train_path`: Path to the CSV file containing the training data.
+    * `--test_path`: Path to the CSV file containing the test data for final inference.
+    * `--save_path`: Destination path to save the best model weights (`.pth`).
+    * `--min_user_comments`: Minimum comment threshold for users; those with fewer comments are mapped to a generic ID (0).
+    * `--augment_dataset_value`: Number of random recombinations to generate for samples identified as word lists (`is_words == 1`).
+    * `--report_path_save`: Destination path where the training report and its parameters will be saved as a CSV.
+
+The script also save the results and parameter of the training in a csv file. 
+
+The script **`task1/run_task1_many_times.py`** is a script that allow to run more times in a unique script **task1.py**, it is usefull for recreate a grid search
+
+The script **`task1/read_results.py`** is a script for get a quickly overview of a csv of different training, return the results in a txt file.
+
 # EmotionValArouTimeVariation2026 — Task 2 (Subtask 2A / 2B)
 
 A single Python runner that executes **Subtask 2A** or **Subtask 2B** based on a CLI flag:

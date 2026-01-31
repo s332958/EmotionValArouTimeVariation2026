@@ -6,27 +6,21 @@ import seaborn as sns
 from collections import Counter
 import os
 
-# Parametri di soglia globali per il filtraggio e la visualizzazione
 PHRASE_X_USER = 10
 COUNT_WORD_IN_PHRASE = 10
 
 def analizza_e_visualizza(file_path):
-    # Creazione della directory per i grafici
     os.makedirs('task1/img', exist_ok=True)
 
-    # 1. Caricamento del dataset
     try:
         df = pd.read_csv(file_path)
     except Exception as e:
-        print(f"Errore nel caricamento del file: {e}")
+        print(f"File not Found: {e}")
         return
 
-    # --- PREPARAZIONE E ANALISI DATI ---
-    
-    # Normalizzazione colonna booleana per identificare liste di parole vs frasi
     df['is_words_bool'] = df['is_words'].astype(str).str.lower() == 'true'
     
-    # 1.1 Conteggio tipologia righe (Data Distribution)
+    # 1.1 Count row tipology
     conteggio_tipologia = df['is_words_bool'].value_counts()
     n_liste_parole = conteggio_tipologia.get(True, 0)
     n_frasi_normali = conteggio_tipologia.get(False, 0)
