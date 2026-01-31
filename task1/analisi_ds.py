@@ -49,20 +49,35 @@ def analizza_dataset(file_path, output_file="task1/report/dataset_analisi.txt"):
         # 2. Dettaglio Utenti (Modificato per mostrare is_words vs frasi)
         dual_print("\n[2] DETTAGLIO ATTIVITÀ PER UTENTE:")
         
-        # Creiamo una tabella pivot per contare is_words e frasi normali
+        # 1. Creiamo la tabella pivot per contare is_words e frasi normali (come già facevi)
         utente_stats = df.groupby(['user_id', 'is_words_bool']).size().unstack(fill_value=0)
-        
-        # Rinominiamo le colonne per chiarezza (gestendo il caso in cui manchino True o False)
+
+        # Gestione colonne mancanti
         if True not in utente_stats.columns: utente_stats[True] = 0
         if False not in utente_stats.columns: utente_stats[False] = 0
-        
+
         utente_stats = utente_stats.rename(columns={True: 'Liste_Parole', False: 'Frasi_Normali'})
-        
+
+        # --- NOVITÀ: Calcolo delle medie ---
+        # Creiamo un dataframe con le medie di valence e arousal per utente
+        medie_va = df.groupby('user_id')[['valence', 'arousal']].mean()
+
+        # Uniamo le medie alla tabella dei conteggi
+        # Usiamo reset_index() per assicurarci che 'user_id' sia una colonna comune su cui unire
+        utente_stats = utente_stats.merge(medie_va, on='user_id')
+
+        # Rinominiamo le nuove colonne per chiarezza nel report
+        utente_stats = utente_stats.rename(columns={
+            'valence': 'Valence_Media',
+            'arousal': 'Arousal_Media'
+        })
+        # -----------------------------------
+
         # Aggiungiamo il totale
         utente_stats['Totale'] = utente_stats['Liste_Parole'] + utente_stats['Frasi_Normali']
-        
+
         # Ordiniamo per il totale decrescente
-        utente_stats = utente_stats.sort_values(by='Totale', ascending=False).reset_index()
+        utente_stats = utente_stats.sort_values(by='Totale', ascending=False).reset_index(drop=True)
         
         dual_print(utente_stats.to_string(index=False))
 

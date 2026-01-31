@@ -243,6 +243,30 @@ def compute_within_r(y_true, y_pred, user_ids):
 def composite_r(rw, rb):
     return np.tanh((np.arctanh(rw) + np.arctanh(rb)) / 2)
 
+def compute_between_mae(y_true, y_pred, user_ids):
+    yt_means, yp_means = [], []
+    for u in np.unique(user_ids):
+        mask = (user_ids == u)
+        yt_means.append(y_true[mask].mean())
+        yp_means.append(y_pred[mask].mean())
+    
+    # Calcolo del MAE tra i vettori delle medie
+    return np.mean(np.abs(np.array(yt_means) - np.array(yp_means)))
+
+def compute_within_mae(y_true, y_pred, user_ids):
+    maes = []
+    for u in np.unique(user_ids):
+        mask = (user_ids == u)
+
+        if mask.sum() >= 1:
+            user_mae = np.mean(np.abs(y_true[mask] - y_pred[mask]))
+            maes.append(user_mae)
+            
+    return np.mean(maes) if maes else 0.0
+
+def composite_mae(maew, maeb):
+    return (maew + maeb) / 2
+
 # ------------------------
 # CREATE MODEL AND TOKENIZER
 # ------------------------
@@ -279,6 +303,11 @@ def traing(device, train_df, val_df, batch_size, learning_rate, epochs, sigma, m
 
     best_score = -1
     best_epoch = -1
+    best_val = -1
+    best_aro = -1
+    best_maev = -1
+    best_maea = -1
+    best_avg_mae = -1
 
     for epoch in range(1, epochs + 1):
 
@@ -320,24 +349,53 @@ def traing(device, train_df, val_df, batch_size, learning_rate, epochs, sigma, m
             compute_within_r(Y[:, 0], P[:, 0], U),
             compute_between_r(Y[:, 0], P[:, 0], U)
         )
+
+        maev = composite_mae(
+            compute_within_mae(Y[:,0], P[:,0], U),
+            compute_between_mae(Y[:,0], P[:,0], U)
+        )
+
         ra = composite_r(
             compute_within_r(Y[:, 1], P[:, 1], U),
             compute_between_r(Y[:, 1], P[:, 1], U)
         )
 
+        maea = composite_mae(
+            compute_within_mae(Y[:,1], P[:,1], U),
+            compute_between_mae(Y[:,1], P[:,1], U)
+        )
+
         avg = (rv + ra) / 2
-        print(f"Epoch {epoch} | Loss {total_loss/len(train_loader):.4f} | Val {rv:.3f} | Aro {ra:.3f} | Avg {avg:.3f}")
+        avg_mae = (maev + maea) / 2
+        print(f"Epoch {epoch} | Loss {total_loss/len(train_loader):.4f} | Val {rv:.3f} | Aro {ra:.3f} | Avg {avg:.3f} | AvgMAE {avg_mae:.3f} | ValMAE {maev:.3f} | AroMAE {maea:.3f}")
 
         if avg > best_score:
             best_score = avg
             best_val = rv
             best_aro = ra
+            best_maev = maev
+            best_maea = maea
+            best_avg_mae = avg_mae
             best_epoch = epoch
             torch.save(model.state_dict(), save_model_path)
             print(" → Saved best model")
 
-    print(f"Best model at epoch: {best_epoch:4d}  -> avg r_composite: {best_score:6.4f} with Valence: {best_val:6.4f} and Arousal: {best_aro:6.4f}")
-    return best_epoch, best_val, best_aro, best_score
+    print("\n" + "="*50)
+    print(f"TRAINING COMPLETE - BEST MODEL SUMMARY")
+    print("="*50)
+    print(f"Best Epoch:      {best_epoch}")
+    print("-"*50)
+    print(f"PEARSON CORRELATION (r_composite):")
+    print(f"  • Valence:     {best_val:6.4f}")
+    print(f"  • Arousal:     {best_aro:6.4f}")
+    print(f"  • Average r:   {best_score:6.4f}")
+    print("-"*50)
+    print(f"MEAN ABSOLUTE ERROR (MAE):")
+    print(f"  • Valence:     {best_maev:6.4f}")
+    print(f"  • Arousal:     {best_maea:6.4f}")
+    print(f"  • Average MAE: {best_avg_mae:6.4f}")
+    print("="*50 + "\n")
+    return best_epoch, best_val, best_aro, best_score, best_maev, best_maea, best_avg_mae
 
 
 # ------------------------
@@ -413,7 +471,8 @@ def write_training_report(
     user_embedding_dim, freeze_encoder,
     filter_few_comments_user, augment_dataset,
     random_state, best_epoch,
-    best_valence_value, best_arousal_value, best_mean_value
+    best_valence_value, best_arousal_value, best_mean_value,
+    best_mae_valence, best_mae_arousal, best_avg_mae
 ):
     file_exists = os.path.isfile(fine_report_name)
 
@@ -422,7 +481,8 @@ def write_training_report(
         "dropout", "user_embedding_dim", "freeze_encoder",
         "filter_few_comments_user", "augment_dataset",
         "random_state", "best_epoch",
-        "best_valence_value", "best_arousal_value", "best_mean_value"
+        "best_valence_value", "best_arousal_value", "best_mean_value",
+        "best_valence_mae", "best_arousal_mae", "best_mean_mae"
     ]
 
     values = [
@@ -430,7 +490,8 @@ def write_training_report(
         dropout, user_embedding_dim, freeze_encoder,
         filter_few_comments_user, augment_dataset,
         random_state, best_epoch,
-        best_valence_value, best_arousal_value, best_mean_value
+        best_valence_value, best_arousal_value, best_mean_value,
+        best_mae_valence, best_mae_arousal, best_avg_mae
     ]
 
     with open(fine_report_name, "a", encoding="utf-8") as f:
@@ -474,10 +535,10 @@ def main():
         train_df = augment_word_lists(train_df, AUGMENT_DATASET_VALUE)
         print(f"Number of elments after augmentation in training dataset: {len(train_df)}")
     model, tokenizer = create_model_and_tokenizer(MODEL_NAME, FREEZE_ENCODER, HIDDEN_DIM, DROPOUT, USER_EMB_DIM, num_users)
-    best_epoch, best_valence, best_arousal, best_score = traing(DEVICE, train_df, val_df, BATCH_SIZE, LR, EPOCHS, sigma, mu, SAVE_BEST_MODEL_PATH, tokenizer, MAX_LEN, model)
+    best_epoch, best_valence, best_arousal, best_score, best_mae_valence, best_mae_arousal, best_avg_mae = traing(DEVICE, train_df, val_df, BATCH_SIZE, LR, EPOCHS, sigma, mu, SAVE_BEST_MODEL_PATH, tokenizer, MAX_LEN, model)
     write_training_report("task1/report/report_training_file.csv",
                           MODEL_NAME, MAX_LEN, BATCH_SIZE, LR, HIDDEN_DIM, DROPOUT, USER_EMB_DIM, FREEZE_ENCODER, N_COMMENTS_TO_BE_KNOW, AUGMENT_DATASET_VALUE, RANDOM_STATE,
-                          best_epoch, best_valence, best_arousal, best_score)
+                          best_epoch, best_valence, best_arousal, best_score, best_mae_valence, best_mae_arousal, best_avg_mae)
     testing(DEVICE, SAVE_BEST_MODEL_PATH, TEST_PATH, user_to_idx, BATCH_SIZE, sigma, mu, tokenizer, MAX_LEN, model)
 
 
