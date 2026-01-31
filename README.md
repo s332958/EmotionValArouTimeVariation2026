@@ -18,9 +18,12 @@ EmotionValArouTimeVariation2026/
 │   ├── subtask2a_forecasting_user_marker.csv
 │   ├── train_subtask2b_detailed.csv
 │   └── subtask2b_forecasting_user_marker.csv
+│   └── train_subtask1.csv
+├── task1/
+│   └── task1.py
 ├── task2/
 │   └── task2.py
-├── eval.py                  # optional: provides task2_correlation
+├── eval.py                 
 ├── requirements.txt
 └── README.md
 ```
@@ -33,21 +36,7 @@ EmotionValArouTimeVariation2026/
 
 ## Installation
 
-### 1) Create and activate a virtual environment (recommended)
-
-**macOS / Linux**
-```bash
-python3 -m venv .venv
-source .venv/bin/activate
-```
-
-**Windows (PowerShell)**
-```powershell
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-```
-
-### 2) Install dependencies
+### Install dependencies
 
 ```bash
 pip install -r requirements.txt
@@ -120,33 +109,3 @@ python task2/task2.py -b --out_path_2b my_2b.csv
 - disposition_change_valence  
 - disposition_change_arousal  
 
----
-
-## Optional evaluation
-
-If `eval.py` is present and exposes `task2_correlation`, the script computes unofficial scores.
-
----
-
-## Troubleshooting
-
-### File not found
-```bash
-ls datasets
-```
-
-### Slow on CPU (2B)
-```bash
-python task2/task2.py -b --epochs_2b 10 --n_splits_2b 3
-```
-
----
-
-## Leakage note (2B)
-
-2B uses only **group==1** information and safe features.
-
----
-
-## License
-See LICENSE if provided.
